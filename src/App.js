@@ -1,26 +1,56 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ProductTable from './components/ProductTable';
+import PropTypes from 'prop-types';
+
+
+
+
+const products = [
+  {
+    name:"shoes",
+    price:200,
+    category:"clothes"
+  },
+  {
+    name: "tv",
+    price: 600,
+    category : "Electronics"
+  },
+    {
+      name: "chemise",
+      price:99,
+      category: "Clothes"
+    }
+];
+
+ProductTable.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({
+  name: PropTypes.string,
+  price: PropTypes.number,
+  category: PropTypes.string
+  }
+  ))
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <table >
+        <thead>
+        <tr>
+        <th >  Name  </th>
+        <th >  Price  </th>
+        <th >  Category  </th>
+        </tr>
+        </thead>
+        <tbody>
+          <ProductTable data = {products} />
+          <ProductTable data = {products} />
+        </tbody>
+    </table>
   );
 }
+
+
 
 export default App;
